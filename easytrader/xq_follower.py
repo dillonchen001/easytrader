@@ -158,6 +158,8 @@ class XueQiuFollower(BaseFollower):
 
     def create_query_transaction_params(self, strategy):
         params = {"cube_symbol": strategy, "page": 1, "count": 1}
+        if re.match('SP', strategy):
+            self.TRANSACTION_API = "https://xueqiu.com/service/tc/snowx/PAMID/cubes/rebalancing/history"
         return params
 
     # noinspection PyMethodOverriding
